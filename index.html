@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 5 · Casos de Estudio Aplicados | Kinetix Performance Sports — Universidad Anáhuac Mayab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Canvas Alert Ribbon -->
+  <div class="canvas-ribbon" role="region" aria-label="Aviso de entrega en Canvas">
+    <div class="canvas-ribbon-inner">
+      <span class="canvas-pill">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        Entrega en Canvas
+      </span>
+      <p>
+        <strong>Importante para alumnos:</strong> Las respuestas y entregables de cada caso (Actividades 1 a 5) deben subirse directamente a la plataforma <strong>Canvas</strong> en la asignación correspondiente.
+      </p>
+      <button type="button" class="ribbon-btn" id="openCanvasModalBtn">Ver guía de entrega</button>
+    </div>
+  </div>
+
+  <!-- Mobile Top Header -->
+  <header class="mobile-header">
+    <button type="button" class="menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <div class="mobile-brand">
+      <span class="brand-kicker">Anáhuac Mayab · Módulo 5</span>
+      <span class="brand-title">Casos Kinetix</span>
+    </div>
+    <button type="button" class="mobile-canvas-btn" id="mobileCanvasBtn" title="Entrega en Canvas">Canvas</button>
+  </header>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <div class="app-shell">
+    <!-- Sidebar Navigation with Expandable Submenus -->
+    <aside class="sidebar" id="sidebar" aria-label="Navegación principal del workbook">
+      <div class="sidebar-header">
+        <div class="brand-badge">UNIVERSIDAD ANÁHUAC MAYAB</div>
+        <h1 class="sidebar-title">Módulo 5: Comunicación y Gestión de la Información con IA</h1>
+        <p class="sidebar-subtitle">Workbook de Casos Aplicados · Kinetix Performance Sports</p>
+      </div>
+
+      <div class="sidebar-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" id="globalSearchInput" placeholder="Buscar caso, tema o dato..." aria-label="Buscar en el workbook" />
+      </div>
+
+      <nav class="nav-tree" id="navTree">
+        <!-- Populated dynamically by app.js -->
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="canvas-sidebar-card">
+          <div class="canvas-sidebar-title">
+            <span class="dot-live"></span>
+            Entrega Oficial: Canvas
+          </div>
+          <p>Consulta aquí los casos y sube tus respuestas en la tarea correspondiente dentro de <strong>Canvas</strong>.</p>
+        </div>
+        <div class="academic-note-mini">
+          Escenario ficticio didáctico · Nov–Dic 2026 · Posgrado
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content" id="mainContent" tabindex="-1">
+      <!-- Top Context & Submenu Bar -->
+      <div class="topbar" id="topbar">
+        <div class="breadcrumbs" id="breadcrumbs"></div>
+        <div class="topbar-actions">
+          <div class="subnav-dropdown-wrapper">
+            <label for="quickCaseSelect" class="sr-only">Ir rápidamente a una sección</label>
+            <select id="quickCaseSelect" class="quick-select" aria-label="Selector rápido de casos"></select>
+          </div>
+          <button type="button" class="btn-outline" id="printViewBtn" title="Imprimir o guardar en PDF">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            <span>Imprimir</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal Submenu Tabs for Active Section -->
+      <div class="section-submenus-bar" id="sectionSubmenusBar" role="navigation" aria-label="Submenús de la sección actual">
+        <!-- Populated dynamically -->
+      </div>
+
+      <!-- Search Results Overlay Panel (when searching) -->
+      <section class="search-results-panel hidden" id="searchResultsPanel" aria-live="polite"></section>
+
+      <!-- Dynamic View Container -->
+      <div class="content-container" id="contentContainer">
+        <!-- Populated dynamically by app.js -->
+      </div>
+
+      <!-- Prev / Next Case Footer -->
+      <footer class="view-footer" id="viewFooter"></footer>
+    </main>
+  </div>
+
+  <!-- Canvas Submission Modal -->
+  <div class="modal-overlay hidden" id="canvasModal" role="dialog" aria-modal="true" aria-labelledby="canvasModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="badge badge-canvas">Instrucciones de Entrega</span>
+          <h2 id="canvasModalTitle">¿Cómo subir tus respuestas a Canvas?</h2>
+        </div>
+        <button type="button" class="modal-close" id="closeCanvasModalBtn" aria-label="Cerrar ventana">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-lead">
+          Este portal está diseñado para que consultes la narrativa, datos, instrucciones y rúbricas de cada caso. <strong>Todas las respuestas y entregables se suben exclusivamente a Canvas.</strong>
+        </p>
+        <div class="canvas-checklist">
+          <div class="canvas-step">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Consulta el caso y sus submenús</strong>
+              <p>Lee la narrativa completa antes de revisar las instrucciones y verifica si el caso permite o prohíbe el uso de IA.</p>
+            </div>
+          </div>
+          <div class="canvas-step">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Prepara tu entregable según la modalidad</strong>
+              <ul>
+                <li><strong>Caso 1 (Sin IA · Grupal):</strong> Fotografía/evidencia legible del mapa manual en rotafolio o pizarrón + análisis de 5 puntos de ruido, 3 cuellos de botella y protocolo manual.</li>
+                <li><strong>Caso 2 (Sin IA · Individual o parejas):</strong> Documento de diagnóstico ejecutivo (máx. 1 página) con tabla Accionable vs. Ruido, evaluación de fuentes y respuesta sustentada.</li>
+                <li><strong>Caso 3 (IA Generativa · Grupal):</strong> Árbol de decisión (mín. 2 escenarios, 5 nodos c/u), system prompt, secuencia de doble vía y documentación del prototipo.</li>
+                <li><strong>Caso 4 (IA Analítica · Grupal):</strong> Tabla de 7 KPIs, diseño/layout del dashboard, 3 visualizaciones y 5 reglas SI-ENTONCES.</li>
+                <li><strong>Caso 5 (IA Integrada · Entregable Final):</strong> Documento ejecutivo con las 5 secciones obligatorias + presentación para el Comité Directivo.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="canvas-step">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Sube tu archivo en la asignación de Canvas</strong>
+              <p>Ingresa a tu curso del <strong>Módulo 5 en Canvas</strong>, ubica la tarea del caso correspondiente (Actividad 1 a 5) y adjunta tu archivo antes de la fecha límite indicada por tu docente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary" id="confirmCanvasModalBtn">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
